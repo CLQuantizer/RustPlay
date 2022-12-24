@@ -1,3 +1,3 @@
 There are many folders here
 
-Each of the wil be a rust app
+Each of these is a rust app
