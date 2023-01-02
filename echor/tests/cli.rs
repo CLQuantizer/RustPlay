@@ -66,3 +66,23 @@ fn compare1()->TestResult{
     // env::set_var("RUST_BACKTRACE", "1");
     run(&["Hello there"], "tests/expected/hello1.txt")
 }
+
+#[test]
+fn compare2()->TestResult{
+    run(&["Hello", "there"], "tests/expected/hello2.txt")
+}
+
+#[test]
+fn compare3()->TestResult{
+    run(&["Hello  there", "-n"], "tests/expected/hello1.n.txt")
+}
+
+#[test]
+fn compare4()->TestResult{
+    run(&["Hello", "there", "-n"], "tests/expected/hello2.n.txt")
+}
+
+#[test]
+fn compare4copy()->TestResult{
+    run(&["-n","Hello", "there"], "tests/expected/hello2.n.txt")
+}
