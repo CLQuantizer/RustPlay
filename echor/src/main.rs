@@ -20,7 +20,7 @@ fn main() {
                 .takes_value(false),
         )
         .get_matches();
-    
+    // looks like this is written declaratively?
     let text = matches.values_of_lossy("ezio_text").unwrap();
     let omit_newline = matches.is_present("omit_newline");
     print!("{}{}", text.join(" "), if omit_newline {""} else {"\n"});
