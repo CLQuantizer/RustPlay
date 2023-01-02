@@ -3,10 +3,11 @@ use predicates::prelude::*;
 
 #[test]
 fn dies_no_args(){
+    // init a mutable cmd from assert_cmd::Command
     let mut cmd = Command::cargo_bin("echor").unwrap();
     cmd.assert()
         .failure()
-        .stderr(predicate::str::contains("USAGE"));
+        .stderr(predicate::str::contains("SAGE"));
 }
 
 #[test]
