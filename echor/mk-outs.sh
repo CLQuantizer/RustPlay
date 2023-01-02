@@ -1,5 +1,5 @@
 #!bash
-OUTDIR="test/expected"
+OUTDIR="tests/expected"
 
 [[ ! -d "$OUTDIR" ]] && mkdir -p "$OUTDIR"
 

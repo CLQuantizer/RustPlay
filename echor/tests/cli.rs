@@ -16,7 +16,7 @@ fn dies_no_args() -> TestResult {
 }
 
 #[test]
-fn runs()->TestResult{
+fn runs() -> TestResult {
     let mut cmd = Command::cargo_bin("echor").unwrap();
     cmd.arg("hello").assert().success();
     cmd.arg("damn").assert().success();
@@ -24,14 +24,45 @@ fn runs()->TestResult{
 }
 
 #[test]
-fn compare()->TestResult{
-    let outfile = "test/expected/hello1.n.txt";
+fn compare_n() -> TestResult {
+    let outfile = "tests/expected/hello1.n.txt";
     let expected = fs::read_to_string(outfile).unwrap();
     let mut cmd = Command::cargo_bin("echor").unwrap();
     //be careful there is no \n at the end of hello1.n.txt
-    cmd
-        .arg("-n")
-        .arg("Hello  there").assert().success().stdout(expected);
+    cmd.arg("-n")
+        .arg("Hello  there")
+        .assert()
+        .success()
+        .stdout(expected);
 
     Ok(())
-    }
+}
+
+#[test]
+fn compare() -> TestResult {
+    let outfile = "tests/expected/hello2.txt";
+    let expected = fs::read_to_string(outfile).unwrap();
+    let mut cmd = Command::cargo_bin("echor").unwrap();
+    //be careful there is no \n at the end of hello1.n.txt
+    cmd.args(vec!["Hello", "there"])
+        .assert()
+        .success()
+        .stdout(expected);
+    Ok(())
+}
+
+fn run(args: &[&str], expected_file: &str)->TestResult{
+    let expected = fs::read_to_string(expected_file)?;
+    Command::cargo_bin("echor")?
+        .args(args)
+        .assert()
+        .success()
+        .stdout(expected);
+    Ok(())
+}
+#[test]
+fn compare1()->TestResult{
+    // use std::env;
+    // env::set_var("RUST_BACKTRACE", "1");
+    run(&["Hello there"], "tests/expected/hello1.txt")
+}
