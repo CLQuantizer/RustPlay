@@ -13,7 +13,7 @@ class Dog {
         l.add(new Dog(2));
         l.add(new Dog(3));
         Dog dog3 = l.peek();
-        l.peek();
+        l.pop();
         System.out.println(dog3.id);
     }
 }
