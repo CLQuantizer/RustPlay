@@ -27,6 +27,7 @@ fn play_with_iter_and_into_iter(){
     assert_eq!(iter.next(), Some(&1));
     assert_eq!(iter.next(), Some(&2));
 
+    // Some(&1) and Some(1) are diff
     let v = vec![1, 2, 3];
     let mut iter = v.into_iter();
     assert_eq!(iter.next(), Some(1));
