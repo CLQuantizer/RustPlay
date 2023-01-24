@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "iter_demo"
+name = "grep-lite"
 version = "0.1.0"
 dependencies = [
  "regex",
