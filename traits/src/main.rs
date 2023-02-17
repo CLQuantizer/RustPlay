@@ -56,7 +56,7 @@ where
 fn main() {
     let enumeration = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     print_iterator(enumeration.clone());
-
+    //clone cuz we're not cosuming this shit
     let filtered = enumeration.clone().my_filter(|&item| item % 2 == 0);
     print_iterator(filtered);
 
