@@ -55,21 +55,16 @@ where
 
 fn main() {
     let enumeration = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    print_iterator(enumeration.clone());
-    //clone cuz we're not cosuming this shit
-    let filtered = enumeration.clone().my_filter(|&item| item % 2 == 0);
-    print_iterator(filtered);
-
-    let mapped = enumeration.clone().my_map(|item| format!("Value: {}", item));
-    print_iterator(mapped);
+   
+    //clone, cuz we ain't cosuming this shit
+    let filter_mapped= enumeration.clone()
+        .my_map(|item| *item)
+        .my_filter(|&item| item > 3 && item < 9)
+        .my_filter(|&item| item % 2 == 0)
+        .my_map(|item| format!{"val: {}", item});
+    print_iterator(filter_mapped);
 
     let total = enumeration.clone().my_sum();    
     println!("Total: {}", total);
-
-    let filtered_mapped_total = enumeration.clone()
-        .my_filter(|&item| item % 2 == 0)
-        .my_map(|item| item * 2)
-        .my_sum();
-    println!("Filtered Mapped total is: {}", filtered_mapped_total);
 }
 
