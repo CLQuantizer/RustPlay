@@ -1,4 +1,5 @@
 use std::fmt::Display;
+use std::ops::AddAssign;
 
 pub struct MyFilter<I, P> {
     pub iterator: I,
@@ -10,7 +11,7 @@ pub struct MyMap<I, M> {
     pub mapper: M,
 }
 
-pub trait MyIterator {
+pub trait MyIterator{ 
     type Item;
 
     fn next(&mut self) -> Option<Self::Item>;
@@ -36,9 +37,17 @@ pub trait MyIterator {
             mapper,
         }
     }
-
-    fn my_sum(mut self) -> i32 where Self: Sized{
-        0    
+    
+    fn my_sum(mut self) -> Self::Item
+        where 
+            Self: Sized, 
+            Self::Item: AddAssign + Default + Copy
+    {   
+        let mut sum = Self::Item::default();
+        while let Some(item) = self.next() {
+            sum += item;
+        }
+        sum
     }
 
 }

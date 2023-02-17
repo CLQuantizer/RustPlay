@@ -63,12 +63,13 @@ fn main() {
     let mapped = enumeration.clone().my_map(|item| format!("Value: {}", item));
     print_iterator(mapped);
 
-    // let total = enumeration.clone().my_sum();    // println!("Total: {}", total);
+    let total = enumeration.clone().my_sum();    
+    println!("Total: {}", total);
 
-    // let filtered_mapped_total = enumeration.clone()
-    //     .my_filter(|&item| item % 2 == 0)
-    //     .my_map(|item| item * 2)
-    //     .my_sum();
-    // println!("Filtered Mapped total is: {}", filtered_mapped_total);
+    let filtered_mapped_total = enumeration.clone()
+        .my_filter(|&item| item % 2 == 0)
+        .my_map(|item| item * 2)
+        .my_sum();
+    println!("Filtered Mapped total is: {}", filtered_mapped_total);
 }
 
